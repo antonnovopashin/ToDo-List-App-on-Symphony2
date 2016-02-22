@@ -1,0 +1,9 @@
+a2x_blog:
+    resource: "@A2xBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+login:
+    path:     /login
+    defaults: { _controller: A2xBlogBundle:Security:login }

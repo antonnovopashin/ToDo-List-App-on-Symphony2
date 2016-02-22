@@ -1,0 +1,46 @@
+a2x_blog:
+    resource: "@A2xBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+#potom ubratb etu hren, sdelat defaultController vnutri Blogbundle
+
+
+admin_list_index:
+    path:     /admin    
+    defaults: { _controller: A2xBlogBundle:Admin:index }
+
+admin_list_new:
+    path:     /admin/new    
+    defaults: { _controller: A2xBlogBundle:Admin:new }
+
+admin_list_delete:
+    path:     /admin/delete/{id}
+    defaults: { _controller: A2xBlogBundle:Admin:deleteadmin }
+
+admin_list_show:
+    path:     /admin/{id}    
+    defaults: { _controller: A2xBlogBundle:Admin:show }
+
+admin_list_edit:
+    path:     /admin/{id}/edit  
+    defaults: { _controller: A2xBlogBundle:Admin:edit }
+
+admin_edittask:
+    path:     /admin/{id}/{taskid}/edit
+    defaults: { _controller: A2xBlogBundle:Admin:edittask }
+
+user_registration:
+    path:     /register
+    defaults: { _controller: A2xBlogBundle:Registration:register }
+
+login:
+    path:     /login
+    defaults: { _controller: A2xBlogBundle:Security:login }
+
+logout:
+    path:     /logout
+    defaults: { _controller: A2xBlogBundle:Security:logout }
+
+logout:
+    path: /logout

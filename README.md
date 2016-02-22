@@ -1,4 +1,8 @@
-# ToDo-List-App-on-Symphony2
+my_project
+==========
+
+A Symfony project created on February 12, 2016, 11:19 pm.
+
 
 1. Download all files to your computer
 2. Create a database with name [symfony]  ||   create database symfony;
@@ -6,7 +10,6 @@
 4. Run server  ||  app/console ser:run
 5. Create user at http://127.0.0.1:8000/register
 6. Set userrole of some user to USER_ADMIN ||  UPDATE `symfony`.`app_users` SET `userrole`='ROLE_ADMIN' WHERE `id`='1';
-
 
 1. Скачать все файлы к себе на компьютер
 2. Создать на вашем mysql сервере базу данных с именем [symfony]  ||   create database symfony;

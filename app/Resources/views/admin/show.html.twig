@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ path('homepage') }}">Homepage</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{{ path('login') }}">Login <span class="sr-only">(current)</span></a></li>
+        <li><a href="{{ path('logout') }}">Logout</a></li>
+        <li><a href="{{ path('user_registration') }}">Register</a></li>
+        <li><a href="{{ path('post_index') }}">Your ToDo Lists</a></li>
+        <li><a href="{{ path('admin_list_index') }}">Administration</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="page-header">
+    <h1>{{ post.title }} ToDo List <small>({{ post.description }})</small></h1> 
+</div>   
+<table class="table">
+        <thead>
+            <tr>
+                {#<th>Id</th>#}
+                <th>Title</th>
+                {#<th>Creator</th>#}
+                <th>Description</th>
+                <th>Done</th>
+                {#<th>Created</th>#}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                {#<td><a href="{{ path('admin_list_show', { 'id': todolist.id }) }}">{{ todolist.id }}</a></td>#}
+                <td>{{ task.title }}</td>
+                {#<td>{{ todolist.creator }}</td>#}
+                <td>{{ task.description }}</td>
+                <td>{% if task.done %}  <input type="checkbox" name="published" value="Yes" checked> {% else %} <input type="checkbox" name="published" value="No" >  {% endif %}</td>
+                {#<td>{% if todolist.created %}{{ todolist.created|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                <td>
+                   <div class="btn-group" role="group">
+                             
+                            <a href="{{ path('admin_edittask', { 'id': task.id,'taskid': post.id }) }}" class="btn btn-default">edit</a>
+                        
+                            
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+
+<a href="{{ path('newtask', { 'id': post.id }) }}" class="btn btn-default">new task</a>
+<a href="{{ path('admin_list_edit', { 'id': post.id }) }}" class="btn btn-default">Edit List</a>
+        
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Delete List" class="btn btn-default">
+    {{ form_end(delete_form) }}
+
+<a href="{{ path('admin_list_index') }}" class="btn btn-default">Back to the list of todolists</a>
+            
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+{% endblock %}
